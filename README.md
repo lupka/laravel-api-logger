@@ -23,9 +23,13 @@ protected $middlewareGroups = [
     ...
     'api' => [
         ...
-        \Lupka\ApiLog\Middleware\ApiLogger::class,
+        'api-logger',
     ],
 ];
 ```
 
-Or, you can add the alias to any route or group you want to log:
+Or, you can add the alias to a specific route or group:
+
+```php
+Route::post('/test', 'TestController@test')->middleware('api-logger');
+```
