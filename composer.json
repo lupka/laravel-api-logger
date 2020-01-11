@@ -13,5 +13,20 @@
     "require-dev": {
         "orchestra/testbench": "^3.7",
         "phpunit/phpunit": "^8.5"
-    }
+    },
+    "autoload": {
+        "psr-4": {
+            "Lupka\\ApiLog\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lupka\\ApiLog\\ApiLogServiceProvider"
+            ],
+            "aliases": {
+            }
+        }
+    },
+    "minimum-stability": "dev"
 }
