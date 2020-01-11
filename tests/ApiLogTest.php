@@ -107,10 +107,13 @@ class ApiLogTest extends TestCase
 
     public function test_complex_url_route_log()
     {
-        $response = $this->get('url/with/parts');
+        Route::get('/url/parameter/{param}', TestApiController::class.'@param');
+
+        $response = $this->get('/url/parameter/999');
 
         $this->assertDatabaseHas('api_logs', [
-            'url' => 'url/with/parts',
+            'url' => 'url/parameter/999',
+            'response_body' => '{"param":"999"}',
         ]);
     }
 }

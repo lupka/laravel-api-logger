@@ -13,4 +13,9 @@ class TestApiController
     {
         return ['method' => 'post'];
     }
+
+    public function param($param)
+    {
+        return ['param' => $param];
+    }
 }
