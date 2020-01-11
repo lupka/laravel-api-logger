@@ -1,0 +1,13 @@
+{
+    "name": "lupka/laravel-api-log",
+    "description": "Logs requests/responses inside your app via middleware.",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Chalupka",
+            "email": "alex@alexchalupka.com"
+        }
+    ],
+    "require": {}
+}
