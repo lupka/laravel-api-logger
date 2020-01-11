@@ -33,3 +33,7 @@ Or, you can add the alias to a specific route or group:
 ```php
 Route::post('/test', 'TestController@test')->middleware('api-logger');
 ```
+
+## License
+
+Licensed under the MIT license. See [License File](LICENSE) for more information.
