@@ -71,4 +71,17 @@ class ApiLogTest extends TestCase
             'response_body' => '{"method":"post"}',
         ]);
     }
+
+    public function test_404_route_log()
+    {
+        $response = $this->postJson('nope');
+
+        $this->assertDatabaseHas('api_logs', [
+            'method' => 'POST',
+            'url' => 'nope',
+            'status' => 404,
+            'ip' => '127.0.0.1',
+            'exception_type' => 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException',
+        ]);
+    }
 }
