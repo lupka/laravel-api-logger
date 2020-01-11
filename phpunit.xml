@@ -12,6 +12,7 @@
     <testsuites>
         <testsuite name="Library Program Test Suite">
             <directory suffix=".php">./tests/</directory>
+            <exclude>./tests/TestCase.php</exclude>
         </testsuite>
     </testsuites>
 </phpunit>

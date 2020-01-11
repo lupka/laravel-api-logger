@@ -1,6 +1,7 @@
 <?php
 
-use Orchestra\Testbench\TestCase;
+namespace Lupka\ApiLog\Tests;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Contracts\Http\Kernel;
 
@@ -10,31 +11,12 @@ use Lupka\ApiLog\Tests\Fixtures\TestApiController;
 
 class ApiLogTest extends TestCase
 {
-    protected function setUp() : void
+    public function getEnvironmentSetUp($app)
     {
-        parent::setUp();
-        $this->artisan('migrate', ['--database' => 'testbench'])->run();
-    }
-
-    protected function getPackageProviders($app)
-    {
-        return [
-            ApiLogServiceProvider::class,
-        ];
-    }
-
-    protected function getEnvironmentSetUp($app)
-    {
-        // Setup default database to use sqlite :memory:
-        $app['config']->set('database.default', 'testbench');
-        $app['config']->set('database.connections.testbench', [
-            'driver'   => 'sqlite',
-            'database' => ':memory:',
-            'prefix'   => '',
-        ]);
-
         // add middleware to all routes for testing
         $app->make(Kernel::class)->prependMiddleware(ApiLogger::class);
+
+        parent::getEnvironmentSetUp($app);
     }
 
     public function test_get_route_log()

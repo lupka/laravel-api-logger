@@ -23,6 +23,8 @@ class ApiLogServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $result = $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+
+        $this->app['router']->aliasMiddleware('api-logger', \Lupka\ApiLog\Middleware\ApiLogger::class);
     }
 }
