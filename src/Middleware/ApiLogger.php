@@ -1,9 +1,9 @@
 <?php
 
-namespace Lupka\ApiLog\Middleware;
+namespace Lupka\ApiLogger\Middleware;
 
 use Closure;
-use Lupka\ApiLog\Models\ApiLog;
+use Lupka\ApiLogger\Models\ApiLog;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response as GenericResponse;
 

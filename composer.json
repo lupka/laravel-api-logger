@@ -1,5 +1,5 @@
 {
-    "name": "lupka/laravel-api-log",
+    "name": "lupka/laravel-api-logger",
     "description": "Logs requests/responses inside your app via middleware.",
     "type": "package",
     "license": "MIT",
@@ -19,18 +19,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Lupka\\ApiLog\\": "src/"
+            "Lupka\\ApiLogger\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Lupka\\ApiLog\\Tests\\": "tests"
+            "Lupka\\ApiLogger\\Tests\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Lupka\\ApiLog\\ApiLogServiceProvider"
+                "Lupka\\ApiLogger\\ApiLoggerServiceProvider"
             ],
             "aliases": {
             }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Lupka\ApiLog;
+namespace Lupka\ApiLogger;
 
 use Illuminate\Support\ServiceProvider;
 
-class ApiLogServiceProvider extends ServiceProvider
+class ApiLoggerServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -25,6 +25,6 @@ class ApiLogServiceProvider extends ServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
-        $this->app['router']->aliasMiddleware('api-logger', \Lupka\ApiLog\Middleware\ApiLogger::class);
+        $this->app['router']->aliasMiddleware('api-logger', \Lupka\ApiLogger\Middleware\ApiLogger::class);
     }
 }

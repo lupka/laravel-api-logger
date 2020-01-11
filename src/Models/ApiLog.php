@@ -1,6 +1,6 @@
 <?php
 
-namespace Lupka\ApiLog\Models;
+namespace Lupka\ApiLogger\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

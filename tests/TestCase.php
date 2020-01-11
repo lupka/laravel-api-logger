@@ -1,14 +1,14 @@
 <?php
 
-namespace Lupka\ApiLog\Tests;
+namespace Lupka\ApiLogger\Tests;
 
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Contracts\Http\Kernel;
 
-use Lupka\ApiLog\Middleware\ApiLogger;
-use Lupka\ApiLog\ApiLogServiceProvider;
-use Lupka\ApiLog\Tests\Fixtures\TestApiController;
+use Lupka\ApiLogger\Middleware\ApiLogger;
+use Lupka\ApiLogger\ApiLoggerServiceProvider;
+use Lupka\ApiLogger\Tests\Fixtures\TestApiController;
 
 class TestCase extends OrchestraTestCase
 {
@@ -21,7 +21,7 @@ class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app)
     {
         return [
-            ApiLogServiceProvider::class,
+            ApiLoggerServiceProvider::class,
         ];
     }
 

@@ -51,10 +51,10 @@ Route::post('/test', 'TestController@test')->middleware('api-logger');
 
 ## Viewing Logs
 
-Logs are stored in the `api_logs` table. There's an Eloquent model included in the package (`Lupka\ApiLog\Models\ApiLog`) for querying records, etc. For example, to get all logs:
+Logs are stored in the `api_logs` table. There's an Eloquent model included in the package (`Lupka\ApiLogger\Models\ApiLog`) for querying records, etc. For example, to get all logs:
 
 ```php
-Lupka\ApiLog\Models\ApiLog::all();
+Lupka\ApiLogger\Models\ApiLog::all();
 ```
 
 ## License

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lupka\ApiLog\Tests\Fixtures;
+namespace Lupka\ApiLogger\Tests\Fixtures;
 
 class TestApiController
 {

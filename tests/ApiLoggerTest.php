@@ -1,15 +1,15 @@
 <?php
 
-namespace Lupka\ApiLog\Tests;
+namespace Lupka\ApiLogger\Tests;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Contracts\Http\Kernel;
 
-use Lupka\ApiLog\Middleware\ApiLogger;
-use Lupka\ApiLog\ApiLogServiceProvider;
-use Lupka\ApiLog\Tests\Fixtures\TestApiController;
+use Lupka\ApiLogger\Middleware\ApiLogger;
+use Lupka\ApiLogger\ApiLogServiceProvider;
+use Lupka\ApiLogger\Tests\Fixtures\TestApiController;
 
-class ApiLogTest extends TestCase
+class ApiLoggerTest extends TestCase
 {
     public function getEnvironmentSetUp($app)
     {
@@ -83,7 +83,7 @@ class ApiLogTest extends TestCase
             'ip' => '127.0.0.1',
             'request_body' => '{"param1":"test1","param2":"test2"}',
             'exception_type' => 'Symfony\Component\Debug\Exception\FatalThrowableError',
-            'exception_message' => 'Call to undefined method Lupka\ApiLog\Tests\Fixtures\TestApiController::exception()',
+            'exception_message' => 'Call to undefined method Lupka\ApiLogger\Tests\Fixtures\TestApiController::exception()',
         ]);
     }
 
