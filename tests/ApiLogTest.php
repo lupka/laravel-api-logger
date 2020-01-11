@@ -42,14 +42,32 @@ class ApiLogTest extends TestCase
         Route::get('/get', TestApiController::class.'@get');
 
         $response = $this->get('get');
-        $response->assertStatus(200);
-        $response->assertJson(['method' => 'get']);
 
         $this->assertDatabaseHas('api_logs', [
             'method' => 'GET',
             'url' => 'get',
+            'status' => 200,
+            'ip' => '127.0.0.1',
             'response_body' => '{"method":"get"}',
         ]);
     }
 
+    public function test_post_route_log()
+    {
+        Route::post('/post', TestApiController::class.'@post');
+
+        $response = $this->postJson('post', [
+            'param1' => 'test1',
+            'param2' => 'test2',
+        ]);
+
+        $this->assertDatabaseHas('api_logs', [
+            'method' => 'POST',
+            'url' => 'post',
+            'status' => 200,
+            'ip' => '127.0.0.1',
+            'request_body' => '{"param1":"test1","param2":"test2"}',
+            'response_body' => '{"method":"post"}',
+        ]);
+    }
 }

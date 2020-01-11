@@ -8,4 +8,9 @@ class TestApiController
     {
         return ['method' => 'get'];
     }
+
+    public function post()
+    {
+        return ['method' => 'post'];
+    }
 }
