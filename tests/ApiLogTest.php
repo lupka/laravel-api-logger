@@ -84,4 +84,24 @@ class ApiLogTest extends TestCase
             'exception_type' => 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException',
         ]);
     }
+
+    public function test_500_exception_route_log()
+    {
+        Route::post('/exception', TestApiController::class.'@exception');
+
+        $response = $this->postJson('exception', [
+            'param1' => 'test1',
+            'param2' => 'test2',
+        ]);
+
+        $this->assertDatabaseHas('api_logs', [
+            'method' => 'POST',
+            'url' => 'exception',
+            'status' => 500,
+            'ip' => '127.0.0.1',
+            'request_body' => '{"param1":"test1","param2":"test2"}',
+            'exception_type' => 'Symfony\Component\Debug\Exception\FatalThrowableError',
+            'exception_message' => 'Call to undefined method Lupka\ApiLog\Tests\Fixtures\TestApiController::exception()',
+        ]);
+    }
 }
