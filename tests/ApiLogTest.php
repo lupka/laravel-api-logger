@@ -41,13 +41,14 @@ class ApiLogTest extends TestCase
     {
         Route::get('/get', TestApiController::class.'@get');
 
-        $response = $this->get('get');
+        $response = $this->get('get?q1=data&q2=another');
 
         $this->assertDatabaseHas('api_logs', [
             'method' => 'GET',
             'url' => 'get',
             'status' => 200,
             'ip' => '127.0.0.1',
+            'request_query_parameters' => '{"q1":"data","q2":"another"}',
             'response_body' => '{"method":"get"}',
         ]);
     }
