@@ -23,7 +23,7 @@ class CreateApiLogsTable extends Migration
             $table->text('request_query_parameters');
             $table->integer('user_id')->nullable();
             $table->integer('status');
-            $table->text('response_body');
+            $table->text('response_body')->nullable();
             $table->string('exception_type')->nullable();
             $table->string('exception_message')->nullable();
             $table->timestamps();

@@ -104,4 +104,13 @@ class ApiLogTest extends TestCase
             'exception_message' => 'Call to undefined method Lupka\ApiLog\Tests\Fixtures\TestApiController::exception()',
         ]);
     }
+
+    public function test_complex_url_route_log()
+    {
+        $response = $this->get('url/with/parts');
+
+        $this->assertDatabaseHas('api_logs', [
+            'url' => 'url/with/parts',
+        ]);
+    }
 }
