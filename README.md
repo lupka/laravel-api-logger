@@ -34,6 +34,14 @@ Or, you can add the alias to a specific route or group:
 Route::post('/test', 'TestController@test')->middleware('api-logger');
 ```
 
+## Viewing Logs
+
+Logs are stored in the `api_logs` table. There's an Eloquent model included in the package (`Lupka\ApiLog\Models\ApiLog`) for querying records, etc. For example, to get all logs:
+
+```php
+Lupka\ApiLog\Models\ApiLog::all();
+```
+
 ## License
 
 Licensed under the MIT license. See [License File](LICENSE) for more information.
