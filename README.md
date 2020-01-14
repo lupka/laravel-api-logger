@@ -20,7 +20,7 @@ for each route where the middleware is installed.
 You can install the package via Composer:
 
 ```bash
-composer require lupka/laravel-api-log
+composer require lupka/laravel-api-logger
 ```
 
 The package will automatically register its service provider.
