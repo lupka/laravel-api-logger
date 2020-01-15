@@ -5,8 +5,11 @@ namespace Lupka\ApiLogger\Tests;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Contracts\Http\Kernel;
 
+use Lupka\ApiLogger\Models\ApiLog;
 use Lupka\ApiLogger\Middleware\ApiLogger;
 use Lupka\ApiLogger\ApiLogServiceProvider;
+
+use Lupka\ApiLogger\Tests\Fixtures\User;
 use Lupka\ApiLogger\Tests\Fixtures\TestApiController;
 
 class ApiLoggerTest extends TestCase
@@ -96,6 +99,28 @@ class ApiLoggerTest extends TestCase
         $this->assertDatabaseHas('api_logs', [
             'url' => 'url/parameter/999',
             'response_body' => '{"param":"999"}',
+        ]);
+    }
+
+    public function test_user_is_tracked_and_attached_to_log()
+    {
+        $this->loadLaravelMigrations();
+
+        $user = User::create([
+            'email' => 'test@test.com',
+            'name' => 'test',
+            'password' => 'password'
+        ]);
+
+        Route::get('/get', TestApiController::class.'@get');
+
+        $response = $this->actingAs($user)
+                         ->get('get');
+
+        $this->assertDatabaseHas('api_logs', [
+            'method' => 'GET',
+            'url' => 'get',
+            'user_id' => $user->id,
         ]);
     }
 }
