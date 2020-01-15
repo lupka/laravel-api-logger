@@ -122,5 +122,7 @@ class ApiLoggerTest extends TestCase
             'url' => 'get',
             'user_id' => $user->id,
         ]);
+
+        $this->assertTrue($user->is(ApiLog::first()->user));
     }
 }
