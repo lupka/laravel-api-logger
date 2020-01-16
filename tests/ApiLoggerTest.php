@@ -12,6 +12,8 @@ use Lupka\ApiLogger\ApiLogServiceProvider;
 use Lupka\ApiLogger\Tests\Fixtures\User;
 use Lupka\ApiLogger\Tests\Fixtures\TestApiController;
 
+use Carbon\Carbon;
+
 class ApiLoggerTest extends TestCase
 {
     public function getEnvironmentSetUp($app)
@@ -126,5 +128,32 @@ class ApiLoggerTest extends TestCase
         ]);
 
         $this->assertTrue($user->is(ApiLog::first()->user));
+    }
+
+    public function test_clear_api_logs_command()
+    {
+        $this->loadLaravelMigrations();
+        $this->withFactories(__DIR__.'/../database/factories');
+
+        $toBeDeleted = factory(ApiLog::class, 3)->create(['created_at' => Carbon::now()->subDays(35)]);
+        $toNotBeDeleted = factory(ApiLog::class)->create([]);
+
+        $this->artisan('api-logger:clear')
+             ->expectsOutput('Clearing API logs...')
+             ->expectsOutput('3 logs deleted');
+
+        $this->assertDatabaseMissing('api_logs', [
+            'id' => $toBeDeleted[0]->id,
+        ]);
+        $this->assertDatabaseMissing('api_logs', [
+            'id' => $toBeDeleted[1]->id,
+        ]);
+        $this->assertDatabaseMissing('api_logs', [
+            'id' => $toBeDeleted[2]->id,
+        ]);
+
+        $this->assertDatabaseHas('api_logs', [
+            'id' => $toNotBeDeleted->id,
+        ]);
     }
 }

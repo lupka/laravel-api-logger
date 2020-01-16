@@ -30,5 +30,11 @@ class ApiLoggerServiceProvider extends ServiceProvider
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->app['router']->aliasMiddleware('api-logger', \Lupka\ApiLogger\Middleware\ApiLogger::class);
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                \Lupka\ApiLogger\Console\Commands\ClearApiLogs::class,
+            ]);
+        }
     }
 }
