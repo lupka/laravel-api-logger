@@ -24,7 +24,7 @@ class ApiLoggerServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/api_logger.php' => config_path('api_logger.php'),
+            __DIR__.'/../config/api-logger.php' => config_path('api-logger.php'),
         ], 'config');
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
