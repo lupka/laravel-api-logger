@@ -15,6 +15,6 @@ class ApiLog extends Model
 
     public function user()
     {
-        return $this->belongsTo('Lupka\ApiLogger\Tests\Fixtures\User');
+        return $this->belongsTo(config('api_logger.user_class'));
     }
 }

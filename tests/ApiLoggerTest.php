@@ -19,6 +19,8 @@ class ApiLoggerTest extends TestCase
         // add middleware to all routes for testing
         $app->make(Kernel::class)->prependMiddleware(ApiLogger::class);
 
+        $app->config->set('api_logger.user_class', \Lupka\ApiLogger\Tests\Fixtures\User::class);
+
         parent::getEnvironmentSetUp($app);
     }
 

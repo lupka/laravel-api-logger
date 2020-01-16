@@ -31,6 +31,10 @@ Then run the migration to add the `api_logs` table to your database:
 php artisan migrate
 ```
 
+Publish the config file:
+
+php artisan vendor:publish --provider="Lupka\ApiLogger\ApiLoggerServiceProvider" --tag="config"
+
 Now you can install the `api-logger` middleware as needed. For example, in `app/Http/Kernel.php` (to log every API request):
 
 ```php
