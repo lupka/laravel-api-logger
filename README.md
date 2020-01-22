@@ -68,6 +68,7 @@ Logs can be cleared by scheduling the `api-logger:clear` job in your `app/Consol
 ```php
 protected function schedule(Schedule $schedule)
 {
+    ...
     $schedule->command('api-logger:clear')->daily();
 }
 ```
