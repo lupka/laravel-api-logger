@@ -31,7 +31,7 @@ Then run the migration to add the `api_logs` table to your database:
 php artisan migrate
 ```
 
-Publish the config file:
+Publish the config file (`api_logger.php`):
 
 `php artisan vendor:publish --provider="Lupka\ApiLogger\ApiLoggerServiceProvider" --tag="config"`
 
