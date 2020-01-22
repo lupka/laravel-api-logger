@@ -61,6 +61,19 @@ Logs are stored in the `api_logs` table. There's an Eloquent model included in t
 Lupka\ApiLogger\Models\ApiLog::all();
 ```
 
+## Clearing Logs
+
+Logs can be cleared by scheduling the `api-logger:clear` job in your `app/Console/Kernel.php` file:
+
+```php
+protected function schedule(Schedule $schedule)
+{
+    $schedule->command('api-logger:clear')->daily();
+}
+```
+
+Any logs older than 30 days will be cleared by default. This can be changed by modifying the `log_expiry` config value.
+
 ## License
 
 Licensed under the MIT license. See [License File](LICENSE) for more information.
