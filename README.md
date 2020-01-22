@@ -75,6 +75,10 @@ protected function schedule(Schedule $schedule)
 
 Any logs older than 30 days will be cleared by default. This can be changed by modifying the `log_expiry` config value.
 
+## Log -> User Relationship
+
+The `ApiLog` Eloquent model contains a relationship (`$log->user()`) with the default `App\User` model. If your user model has a different class name, you can change that relationship using the `user_class` config value.
+
 ## License
 
 Licensed under the MIT license. See [License File](LICENSE) for more information.
